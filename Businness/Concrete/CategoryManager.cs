@@ -1,4 +1,5 @@
 ﻿using Businness.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -17,15 +18,25 @@ namespace Businness.Concrete
             _categoryDal = categoryDal;
         }
 
-        public List<Category> GetAll()
+        public IDataResult<List<Category>> GetAll()
         {
             // iŞ KODLARI YAZILIR.
-            return _categoryDal.GetAll();
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());
         }
 
-        public Category GetById(int categoryId)
+        public IDataResult<Category> GetById(int categoryId)
         {
-            return _categoryDal.Get(c => c.CategoryId == categoryId);
+            return new SuccessDataResult<Category>(_categoryDal.Get(c => c.CategoryId == categoryId));
+        }
+
+        IDataResult<List<Category>> ICategoryService.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        IDataResult<Category> ICategoryService.GetById(int category)
+        {
+            throw new NotImplementedException();
         }
     }
 }

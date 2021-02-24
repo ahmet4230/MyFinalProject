@@ -24,7 +24,7 @@ namespace WebAPİ
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureContainer<ContainerBuilder>(builder =>
                 {
-                    builder.RegisterModule(new AutofacBusinnessModule()); 
+                    builder.RegisterModule(new AutofacBusinessModule()); 
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
